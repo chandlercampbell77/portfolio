@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<div>
+    <script>
+        function blinkr()
+        {
+            let arrowr = document.querySelector('#arrowright');
+            if (arrowr.style.visibility === 'hidden')
+            {
+                arrowr.style.visibility = 'visible';
+            }
+            else
+            {
+                arrowr.style.visibility = 'hidden';
+            }
+        }
+        function blinkl()
+        {
+            let arrowl = document.querySelector('#arrowleft');
+            if (arrowl.style.visibility === 'hidden')
+            {
+                arrowl.style.visibility = 'visible';
+            }
+            else
+            {
+                arrowl.style.visibility = 'hidden';
+            }
+        }
+        window.setInterval(blinkr,600);
+        window.setInterval(blinkl,600);
+    </script>
+    <h1>Hello, {{ user }}</h1>
+    <h1>THIS IS CS50 TRIVIA</h1>
+    <br>
+    <h2>A free trivia web application with over 4,000 questions</h2>
+    <h2>24 categories, 3 difficulties, multiple choice & true/false </h2>
+    <h2>Answer questions correctly to climb the leaderboard</h2>
+    <form action="/" method="post">
+        <div class="sameline">
+            <i class="arrow" id="arrowright">------------------></i>
+            <button id="homebutton" class="btn btn-primary btn-lg btn-block" type="submit">Play Now</button>
+            <i class="arrow" id="arrowleft"><------------------</i>
+        </div>
+    </form>
+</div>
+{% endblock %}

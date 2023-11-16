@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<h1>History</h1>
+<div class="container">
+    <div class="section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Your Answer</th>
+                    <th>Correct Answer</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the database entries to display them in this table -->
+                {% for row in history %}
+                    <tr>
+                        <td>{{ row["question"] }}</td>
+                        <td>{{ row["user_answer"] }}</td>
+                        <td>{{ row["correct_answer"] }}</td>
+                        <td>{{ row["time"] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

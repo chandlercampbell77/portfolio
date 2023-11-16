@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Leaderboard
+{% endblock %}
+
+{% block main %}
+<h1>Leaderboard</h1>
+<div class="container">
+    <div class="section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Questions Correct</th>
+                    <th>Questions Answered</th>
+                    <th>Percent Correct</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the database entries to display them in this table -->
+                {% set count = namespace(value=1) %}
+                {% for row in leaderboard %}
+                    {% if row["answered"] != 0 %}
+                        <tr>
+                            <td>#{{ count.value }}</td>
+                            <td>{{ row["username"] }}</td>
+                            <td>{{ row["correct"] }}</td>
+                            <td>{{ row["answered"] }}</td>
+                            <td>{{ "{:.1f}".format((row["correct"] / row["answered"]) * 100) }}%</td>
+                            <td>{{ row["points"] }}</td>
+                            {% set count.value = count.value + 1 %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

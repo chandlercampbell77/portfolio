@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+<h1>Results</h1>
+<br>
+{% for i in range(amount) %}
+    <h4 style="color: white" class="question{{ i }}">{{ html.unescape(trivia[i]["question"]) }}</h4>
+    <br>
+    {% if feedback[i] == "Correct! +100 points" %}
+        <p style="color: #39FF14" class="feedback{{ i }}">{{ feedback[i] }}</p>
+        <p style="color: #39FF14" class="answer{{ i }}">You selected "{{ answer[i] }}"</p>
+        <p style="color: #39FF14" class="correct{{ i }}">The correct answer was "{{ trivia[i]["correct_answer"] }}"</p>
+    {% else %}
+        <p style="color: #FF3131" class="feedback{{ i }}">{{ feedback[i] }}</p>
+        <p style="color: #FF3131" class="answer{{ i }}">You selected "{{ answer[i] }}"</p>
+        <p style="color: #FF3131" class="correct{{ i }}">The correct answer was "{{ trivia[i]["correct_answer"] }}"</p>
+    {% endif %}
+    <br>
+    <br>
+{% endfor %}
+<form action="/results" method="post">
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Play Again</button>
+</form>
+{% endblock %}

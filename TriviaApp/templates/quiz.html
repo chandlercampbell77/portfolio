@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quiz
+{% endblock %}
+
+{% block main %}
+<h1>Quiz</h1>
+<br>
+<form action="/quiz" method="post">
+    {% if len(answers[0]) == 4 %}
+        {% for i in range(amount) %}
+            <h4 style="color: white" class="question{{ i }}">{{ html.unescape(trivia[i]["question"]) }}</h4>
+            <br>
+            <input type="radio" class="btn-check" name="question{{ i }}" id="option{{ i }}1" value="{{ html.unescape(answers[i][0]) }}" autocomplete="off">
+            <label class="btn btn-outline-success" for="option{{ i }}1">{{ html.unescape(answers[i][0]) }}</label><br>
+            <br>
+            <input type="radio" class="btn-check" name="question{{ i }}" id="option{{ i }}2" value="{{ html.unescape(answers[i][1]) }}" autocomplete="off">
+            <label class="btn btn-outline-success" for="option{{ i }}2">{{ html.unescape(answers[i][1]) }}</label><br>
+            <br>
+            <input type="radio" class="btn-check" name="question{{ i }}" id="option{{ i }}3" value="{{ html.unescape(answers[i][2]) }}" autocomplete="off">
+            <label class="btn btn-outline-success" for="option{{ i }}3">{{ html.unescape(answers[i][2]) }}</label><br>
+            <br>
+            <input type="radio" class="btn-check" name="question{{ i }}" id="option{{ i }}4" value="{{ html.unescape(answers[i][3]) }}" autocomplete="off">
+            <label class="btn btn-outline-success" for="option{{ i }}4">{{ html.unescape(answers[i][3]) }}</label><br>
+            <br>
+            <br>
+            {% endfor %}
+    {% else %}
+        {% for i in range(amount) %}
+            <h4 style="color: white" class="question{{ i }}">{{ html.unescape(trivia[i]["question"]) }}</h4>
+            <br>
+            <input type="radio" class="btn-check" name="question{{ i }}" id="option{{ i }}1" value="{{ html.unescape(answers[i][0]) }}" autocomplete="off">
+            <label class="btn btn-outline-success" for="option{{ i }}1">{{ html.unescape(answers[i][0]) }}</label><br>
+            <br>
+            <input type="radio" class="btn-check" name="question{{ i }}" id="option{{ i }}2" value="{{ html.unescape(answers[i][1]) }}" autocomplete="off">
+            <label class="btn btn-outline-success" for="option{{ i }}2">{{ html.unescape(answers[i][1]) }}</label><br>
+            <br>
+            <br>
+            {% endfor %}
+    {% endif %}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit Answers</button>
+</form>
+{% endblock %}
