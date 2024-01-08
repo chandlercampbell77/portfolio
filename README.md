@@ -15,4 +15,10 @@ Project 3: CS50 Trivia
 
 Developed a full-stack trivia web application using Python, HTML, CSS, JavaScript, SQL, Jinja, Bootstrap, and Flask.
 Implemented features like user registration, question history, and a global leaderboard.
-Utilized REST API with over 4000 questions linked to my web application.
+Utilized JSON API with over 4000 questions linked to my web application.
+
+Project 4: Fake News Detector
+
+Developed a Naive Bayes machine learning classifier to predict whether news articles are fake.
+Coded in Python using the pandas, NumPy, Matplotlib, NLTK, and Scikit-learn libraries.
+Created user interface using Tkinter GUI library.
